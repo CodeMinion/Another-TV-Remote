@@ -9,7 +9,7 @@ class AnotherTvRemote {
   static const EventChannel _tvRemoteEventChannel =
       EventChannel("another_tv_remote_input");
 
-  /// Gets the current state of the Bluetooth module
+  /// Register for TV Remote button events.
   static Stream<TvRemoteEvent> getTvRemoteEvents() async* {
     yield* _tvRemoteEventChannel.receiveBroadcastStream().map((buffer) =>
         TvRemoteEvent(type: KeyType.fromName(name: buffer["type"]), action: KeyAction.fromName(name: buffer["action"])));
