@@ -1,7 +1,7 @@
 name: another_tv_remote
 description: A plugin for receiving TV remote input.
 version: 0.0.1
-homepage:
+homepage: https://github.com/CodeMinion/Another-TV-Remote
 
 environment:
   sdk: ">=2.17.0 <3.0.0"
