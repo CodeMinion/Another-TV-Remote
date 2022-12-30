@@ -46,6 +46,7 @@ object TvRemoteEventProcessor: EventChannel.StreamHandler {
 
         mEventSink?.success(
             mapOf(
+                "keyCode" to event.keyCode,
                 "type" to buttonKey,
                 "action" to actionKey
             )

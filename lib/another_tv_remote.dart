@@ -12,7 +12,7 @@ class AnotherTvRemote {
   /// Register for TV Remote button events.
   static Stream<TvRemoteEvent> getTvRemoteEvents() async* {
     yield* _tvRemoteEventChannel.receiveBroadcastStream().map((buffer) =>
-        TvRemoteEvent(type: KeyType.fromName(name: buffer["type"]), action: KeyAction.fromName(name: buffer["action"])));
+        TvRemoteEvent(keyCode: buffer["keyCode"] as int, type: KeyType.fromName(name: buffer["type"]), action: KeyAction.fromName(name: buffer["action"])));
   }
 }
 
@@ -62,12 +62,13 @@ enum KeyAction {
 }
 
 class TvRemoteEvent {
-  const TvRemoteEvent({required this.type, required this.action});
+  const TvRemoteEvent({required this.keyCode, required this.type, required this.action});
 
+  final int keyCode;
   final KeyType type;
   final KeyAction action;
 
   String toString() {
-    return "Key: $type - Action: $action";
+    return "KeyCode: $keyCode Key: $type - Action: $action";
   }
 }
